@@ -40,8 +40,10 @@ This is for the horizontal layout
 ***************************/
 
 @include media-breakpoint-up(md) {
-    #main-wrapper[data-layout="horizontal"]{
-        background: $body-bg;
+    #main-wrapper[data-layout="horizontal"] {
+        &[data-theme="light"] {
+          background: $body-bg;
+        }
         .topbar{
             transition: 0s;
         }

@@ -1,27 +1,17 @@
-import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
-import {
-  NgbModal,
-  ModalDismissReasons,
-  NgbPanelChangeEvent,
-  NgbCarouselConfig
-} from '@ng-bootstrap/ng-bootstrap';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-declare var $: any;
+import { UiService } from '../../layouts/ui.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html'
 })
-export class NavigationComponent implements AfterViewInit {
+export class NavigationComponent {
   @Output() toggleSidebar = new EventEmitter<void>();
-
   public config: PerfectScrollbarConfigInterface = {};
-
   public showSearch = false;
 
-  constructor(private modalService: NgbModal) {}
-
-  // This is for Notifications
+  // Notificaciones
   notifications: Object[] = [
     {
       btn: 'btn-danger',
@@ -53,7 +43,7 @@ export class NavigationComponent implements AfterViewInit {
     }
   ];
 
-  // This is for Mymessages
+  // Mensajes
   mymessages: Object[] = [
     {
       useravatar: 'assets/images/users/1.jpg',
@@ -85,5 +75,9 @@ export class NavigationComponent implements AfterViewInit {
     }
   ];
 
-  ngAfterViewInit() {}
+  constructor(private uiService: UiService) {}
+
+  toggleSettingsSidebar() {
+    this.uiService.settingsSidebarChange.emit();
+  }
 }

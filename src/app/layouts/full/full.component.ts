@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-declare var $: any;
-
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { UiService } from '../ui.service';
+import { BackgroundColor, LayoutOptions, Theme } from '../../shared/sidebar/layout-options.model';
 
 @Component({
   selector: 'app-full-layout',
@@ -11,30 +11,19 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 })
 export class FullComponent implements OnInit {
   public config: PerfectScrollbarConfigInterface = {};
-
-  constructor(public router: Router) {}
-
-  tabStatus = 'justified';
+  public options: LayoutOptions;
 
   public isCollapsed = false;
-
   public innerWidth: any;
   public defaultSidebar: any;
   public showSettings = false;
   public showMobileMenu = false;
+  public tabStatus = 'justified';
 
-  options = {
-    theme: 'light', // two possible values: light, dark
-    dir: 'ltr', // two possible values: ltr, rtl
-    layout: 'horizontal', // fixed value. shouldn't be changed.
-    sidebartype: 'full', // fixed value. shouldn't be changed.
-    sidebarpos: 'absolute', // two possible values: fixed, absolute
-    headerpos: 'absolute', // two possible values: fixed, absolute
-    boxed: 'boxed', // two possible values: full, boxed
-    navbarbg: 'skin1', // six possible values: skin(1/2/3/4/5/6)
-    sidebarbg: 'skin6', // six possible values: skin(1/2/3/4/5/6)
-    logobg: 'skin1' // six possible values: skin(1/2/3/4/5/6)
-  };
+  constructor(public router: Router, private uiService: UiService) {
+    this.options = uiService.uiSettings;
+    this.uiService.settingsSidebarChange.subscribe(() => this.toggleSidenav());
+  }
 
   ngOnInit() {
     if (this.router.url === '/') {
@@ -60,6 +49,20 @@ export class FullComponent implements OnInit {
         }
         break;
       default:
+    }
+  }
+
+  toggleSidenav() {
+    this.showSettings = !this.showSettings;
+  }
+
+  toggleTheme() {
+    if (this.options.theme === Theme.Light) {
+      this.options.theme = Theme.Dark;
+      this.options.sidebarbg = BackgroundColor.Dark;
+    } else {
+      this.options.theme = Theme.Light;
+      this.options.sidebarbg = BackgroundColor.Light;
     }
   }
 }
