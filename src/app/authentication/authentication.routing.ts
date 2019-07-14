@@ -2,11 +2,16 @@ import { Routes } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { NotfoundComponent } from './404/not-found.component';
 
 export const AuthenticationRoutes: Routes = [
   {
     path: '',
     children: [
+      {
+        path: '404',
+        component: NotfoundComponent
+      },
       {
         path: 'login',
         component: LoginComponent

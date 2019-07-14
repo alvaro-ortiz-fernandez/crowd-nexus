@@ -1,0 +1,13 @@
+.card-body {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.card-title, .input-area, .chat-list {
+    margin-right: 1.25rem;
+    margin-left: 1.25rem;
+}
+
+.chat-box {
+ 	  height:475px;
+}

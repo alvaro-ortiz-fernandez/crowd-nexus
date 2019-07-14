@@ -8,6 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { AuthenticationRoutes } from './authentication.routing';
+import { NotfoundComponent } from './404/not-found.component';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
 
 @NgModule({
   imports: [
@@ -16,8 +19,10 @@ import { AuthenticationRoutes } from './authentication.routing';
     NgbModule
   ],
   declarations: [
+    NotfoundComponent,
     LoginComponent,
     SignupComponent
-  ]
+  ],
+  providers: [ AuthService, AuthGuard ]
 })
 export class AuthenticationModule {}

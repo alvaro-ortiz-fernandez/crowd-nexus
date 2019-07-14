@@ -114,14 +114,26 @@
         </div>
     </li>
     <!-- ============================================================== -->
-    <!-- Perfil de usuario -->
+    <!-- Botón de usuario -->
     <!-- ============================================================== -->
     <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
         <a ngbDropdownToggle class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)" id="3" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <i class="font-24 mdi mdi-account"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-right user-dd" ngbDropdownMenu>
+        <!-- Dropdown -> No logeado -->
+        <div [hidden]="false" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a class="dropdown-item" routerLink="/authentication/login">
+                <i class="mdi mdi-login m-r-5 m-l-5"></i>
+                Login
+            </a>
+            <a class="dropdown-item" routerLink="/authentication/signup">
+                <i class="mdi mdi-account-plus m-r-5 m-l-5"></i>
+                Sing up
+            </a>
+        </div>
+        <!-- Dropdown -> Logeado -->
+        <div [hidden]="true" class="dropdown-menu dropdown-menu-right user-dd" ngbDropdownMenu>
             <span class="with-arrow">
                 <span class="bg-primary"></span>
             </span>
