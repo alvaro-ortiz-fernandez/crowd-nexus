@@ -1,26 +1,63 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import {NgForm} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthData, LoginAttempt } from '../auth-data.model';
+import { ToastrService } from 'ngx-toastr';
+import { Router, RoutesRecognized } from '@angular/router';
+import { filter, pairwise } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  constructor(private authService: AuthService) {}
+export class LoginComponent implements OnInit {
 
-  loginform = true;
-  recoverform = false;
+    private loginForm: FormGroup;
+    private previousUrl: string;
+    private logging = false;
 
-  onSubmit(form: NgForm) {
-      this.authService.login({
-          email: form.value.email,
-          password: form.value.password
-      });
-  }
+    constructor(private authService: AuthService, private router: Router, private toastService: ToastrService) {}
 
-  showRecoverForm() {
-    this.loginform = !this.loginform;
-    this.recoverform = !this.recoverform;
-  }
+    ngOnInit() {
+        // Con esto guardamos la última URL, para redirigir el navegador a ella cuando el usuario se logee
+        this.router.events
+            .pipe(filter((e: any) => e instanceof RoutesRecognized), pairwise())
+            .subscribe((e: any) => {
+                this.previousUrl = e[0].urlAfterRedirects;
+            });
+
+        this.loginForm = new FormGroup({
+            email: new FormControl(null, [ Validators.required, Validators.email ]),
+            password: new FormControl(null, [ Validators.required ])
+        });
+    }
+
+    onSubmit() {
+        this.logging = true;
+
+        const authData: AuthData = {
+            email: this.loginForm.controls.email.value,
+            password: this.loginForm.controls.password.value
+        };
+
+        this.authService.login(authData)
+            .then(result => {
+                this.logging = false;
+                this.displayResult(result);
+
+                if (result === LoginAttempt.Ok) {
+                    const redirectUrl = (this.previousUrl) ? this.previousUrl : '/';
+                    this.router.navigate([redirectUrl]);
+                }
+            });
+    }
+
+    displayResult(result: LoginAttempt): void {
+        if (result === LoginAttempt.Ok) {
+            this.toastService.success(result, 'Operación completada con éxito');
+        } else {
+            this.toastService.error(result, 'Error al iniciar sesión');
+        }
+    }
 }

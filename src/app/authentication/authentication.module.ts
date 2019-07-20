@@ -9,20 +9,22 @@ import { SignupComponent } from './signup/signup.component';
 
 import { AuthenticationRoutes } from './authentication.routing';
 import { NotfoundComponent } from './404/not-found.component';
-import { AuthGuard } from './auth.guard';
-import { AuthService } from './auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecoverComponent } from './recover/recover.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(AuthenticationRoutes),
     NgbModule
   ],
   declarations: [
     NotfoundComponent,
     LoginComponent,
-    SignupComponent
-  ],
-  providers: [ AuthService, AuthGuard ]
+    SignupComponent,
+    RecoverComponent
+  ]
 })
 export class AuthenticationModule {}

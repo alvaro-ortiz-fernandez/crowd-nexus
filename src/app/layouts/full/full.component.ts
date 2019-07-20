@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { UiService } from '../ui.service';
 import { BackgroundColor, LayoutOptions, Theme } from '../../shared/sidebar/layout-options.model';
-import { AuthService } from '../../authentication/auth.service';
 
 @Component({
   selector: 'app-full-layout',
@@ -21,10 +20,9 @@ export class FullComponent implements OnInit {
   public showMobileMenu = false;
   public tabStatus = 'justified';
 
-  constructor(private authService: AuthService, private router: Router, private uiService: UiService) {}
+  constructor(private router: Router, private uiService: UiService) {}
 
   ngOnInit() {
-    this.authService.initAuthListener();
     this.options = this.uiService.uiSettings;
     this.uiService.settingsSidebarChange.subscribe(() => this.toggleSidenav());
 

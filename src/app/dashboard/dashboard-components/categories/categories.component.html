@@ -1,45 +1,57 @@
 <div class="col-xs-12">
-    <div class="row" *ngFor="let category of [1, 2, 3, 4, 5]">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header p-t-5 p-b-5">
-                    <!-- Estadísticas -->
-                    <div class="d-flex">
-                        <div class="my-auto p-t-10">
-                            <span class="display-6 my-auto">
-                                <i class="ti-notepad"></i>
-                            </span>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="card-title category-title">
+                        <span class="font-weight-bold">Anuncios</span>
+                        <span class="text-muted font-14 d-block my-auto">Total posts: 320,426</span>
+                    </h3>
+                </div>
+            </div>
+
+            <div *ngFor="let category of [ 1, 2, 3, 4, 5 ]; let last = last;">
+                <div class="row">
+                    <div class="col-lg-8 col-sm-7 col-xs-12 p-r-20">
+                        <div class="d-flex flex-row">
+                            <div class="p-2 m-r-5">
+                                <i class="mdi mdi-angularjs app-link display-5"></i>
+                            </div>
+                            <div class="my-auto">
+                                <h4 class="card-title font-weight-bold">
+                                    <a href="#" class="app-link">Category name</a>
+                                </h4>
+                                <p class="card-text">Lorem Ipsum is simply dummy text of the printing and type setting industry.</p>
+                            </div>
                         </div>
-                        <div class="m-l-10 my-auto">
-                            <h3 class="m-b-0">120</h3>
-                            <h6 class="m-b-0">Topics</h6>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-5 col-xs-12 my-auto">
+                        <div class="d-flex flex-row
+                            justify-content-center
+                            justify-content-sm-end
+                            justify-content-md-end
+                            justify-content-lg-end
+                            justify-content-xl-end">
+                            <div class="p-2 text-center">
+                                <h4 class="card-title">1.219</h4>
+                                <span>Views</span>
+                            </div>
+                            <div class="p-2 text-center">
+                                <h4 class="card-title">3.198</h4>
+                                <span>Topics</span>
+                            </div>
+                            <div class="p-2 text-center">
+                                <h4 class="card-title">12.467</h4>
+                                <span>Posts</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <!-- Título y descripción -->
-                        <div class="col-md-7 col-xs-12 my-auto">
-                            <h4 class="card-title">
-                                <a href="#" class="link">Category name</a>
-                            </h4>
-                            <p class="card-text">Some quick example text to build on content.</p>
-                            <a href="#" class="btn btn-primary p-l-30 p-r-30">
-                                <span class="m-r-5">Ir al foro</span>
-                                <i class="mdi mdi-login-variant"></i>
-                            </a>
-                        </div>
 
-                        <!-- Último post -->
-                        <div class="col-md-5 col-xs-12">
-                            <h4 class="card-title text-right">Last post</h4>
-                            <a href="#" class="link d-block text-right">Lorem Ipsum is simply dummy text...</a>
-                            <div>
-                                <span class="text-muted float-right">
-                                    By <a href="#" class="link">James Anderson</a>, on April 14, 2016
-                                </span>
-                            </div>
-                        </div>
+                <div *ngIf="!last" class="row">
+                    <div class="col-12">
+                        <hr>
                     </div>
                 </div>
             </div>

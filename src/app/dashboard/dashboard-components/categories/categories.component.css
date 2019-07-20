@@ -1,0 +1,18 @@
+.category-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+h4.card-title {
+    margin-bottom: 2px !important;
+}
+
+.card .card-body .app-link {
+    color: inherit;
+    cursor: pointer;
+    transition: color 0.4s;
+}
+.card .card-body .app-link:hover, .card .card-body .app-link:focus {
+    color: #7460ee;
+    transition: color 0.4s;
+}

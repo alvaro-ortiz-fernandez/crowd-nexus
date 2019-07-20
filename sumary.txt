@@ -1,0 +1,13 @@
+#################################################################
+## FIREBASE
+Correo: alvaortfer@gmail.com
+Consola: https://console.firebase.google.com/project/crowd-nexus
+Usuario: alvaortfer@gmail.com // 123456
+
+## MODELO MONGODB
+https://mongo.tools/ed/project/5c6b068d6a46a940648b5c56
+
+## Pics
+https://dribbble.com/shots/2919423-Material-Design-Forum-Layout/attachments/605595
+
+#################################################################

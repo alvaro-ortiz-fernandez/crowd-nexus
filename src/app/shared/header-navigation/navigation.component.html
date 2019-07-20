@@ -121,8 +121,8 @@
             aria-haspopup="true" aria-expanded="false">
             <i class="font-24 mdi mdi-account"></i>
         </a>
-        <!-- Dropdown -> No logeado -->
-        <div [hidden]="false" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <!-- Dropdown - No logeado -->
+        <div [hidden]="authenticated" ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <a class="dropdown-item" routerLink="/authentication/login">
                 <i class="mdi mdi-login m-r-5 m-l-5"></i>
                 Login
@@ -132,8 +132,8 @@
                 Sing up
             </a>
         </div>
-        <!-- Dropdown -> Logeado -->
-        <div [hidden]="true" class="dropdown-menu dropdown-menu-right user-dd" ngbDropdownMenu>
+        <!-- Dropdown - Logeado -->
+        <div [hidden]="!authenticated" class="dropdown-menu dropdown-menu-right user-dd" ngbDropdownMenu>
             <span class="with-arrow">
                 <span class="bg-primary"></span>
             </span>

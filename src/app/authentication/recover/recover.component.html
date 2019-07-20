@@ -1,0 +1,51 @@
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center;">
+    <div class="auth-box">
+        <div id="recoverform d-block">
+            <div class="logo">
+                <div [hidden]="recovering">
+                    <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span>
+                    <h5 class="font-medium m-b-20">Recover Password</h5>
+                </div>
+
+                <i [hidden]="!recovering" class="fa fa-spin fa-cog display-6 m-b-30" [ngClass]="{ 'd-block': recovering }"></i>
+
+                <span>Enter your Email and instructions will be sent to you!</span>
+            </div>
+            <div class="row m-t-20">
+              <!-- Form -->
+                <form class="col-12">
+                  <!-- email -->
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <form [formGroup]="recoverForm" class="form-horizontal m-t-20" (ngSubmit)="onSubmit()">
+                                <!-- Email -->
+                                <div class="input-group form-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">
+                                            <i [ngClass]="{ 'ti-user': recoverForm.controls['email'].status !== 'PENDING',
+                                                            'fa fa-spin fa-cog': recoverForm.controls['email'].status === 'PENDING' }"></i>
+                                        </span>
+                                    </div>
+                                    <input formControlName="email" type="text" class="form-control form-control-lg" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1"
+                                           [ngClass]="{ 'is-invalid': recoverForm.controls['email'].dirty && recoverForm.controls['email'].status !== 'PENDING' && recoverForm.controls['email'].errors,
+                                                      'is-valid': recoverForm.controls['email'].dirty && recoverForm.controls['email'].status !== 'PENDING' && !recoverForm.controls['email'].errors }">
+                                    <div *ngIf="recoverForm.controls['email'].dirty && recoverForm.controls['email'].errors" class="invalid-feedback">
+                                        <div *ngIf="recoverForm.controls['email'].errors['required']">Por favor, introduzca un valor.</div>
+                                        <div *ngIf="recoverForm.controls['email'].errors['email']">Por favor, introduzca un email válido.</div>
+                                        <div *ngIf="recoverForm.controls['email'].errors['inexistentAccount']">El usuario introducido no existe.</div>
+                                    </div>
+                                </div>
+                                <!-- Submit -->
+                                <div class="form-group text-center ">
+                                    <div class="col-xs-12 m-t-20">
+                                        <button type="submit" class="btn btn-block btn-lg btn-danger" [disabled]="recoverForm.invalid || recoverForm.pending">Reset password</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

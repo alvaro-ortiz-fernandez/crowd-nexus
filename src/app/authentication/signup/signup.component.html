@@ -2,31 +2,59 @@
     <div class="auth-box">
         <div>
             <div class="logo">
-                <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span>
-                <h5 class="font-medium m-b-20">Sign Up to Admin</h5>
+                <div [hidden]="registering">
+                    <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span>
+                    <h5 class="font-medium m-b-20">Sign Up to Admin</h5>
+                </div>
+
+                <i [hidden]="!registering" class="fa fa-spin fa-cog display-6 m-b-30"></i>
             </div>
             <!-- Form -->
             <div class="row">
                 <div class="col-12">
-                    <form class="form-horizontal m-t-20" action="index.html">
-                        <div class="form-group row ">
-                            <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Name">
+                    <form [formGroup]="signupForm" class="form-horizontal m-t-20" (ngSubmit)="onSubmit()">
+                        <!-- Email -->
+                        <div class="input-group form-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i [ngClass]="{ 'ti-user': signupForm.controls['email'].status !== 'PENDING',
+                                                    'fa fa-spin fa-cog': signupForm.controls['email'].status === 'PENDING' }"></i>
+                                </span>
+                            </div>
+                            <input formControlName="email" type="text" class="form-control form-control-lg" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1"
+                                   [ngClass]="{ 'is-invalid': signupForm.controls['email'].dirty && signupForm.controls['email'].status !== 'PENDING' && signupForm.controls['email'].errors,
+                                                'is-valid': signupForm.controls['email'].dirty && signupForm.controls['email'].status !== 'PENDING' && !signupForm.controls['email'].errors }">
+                            <div *ngIf="signupForm.controls['email'].dirty && signupForm.controls['email'].errors" class="invalid-feedback">
+                                <div *ngIf="signupForm.controls['email'].errors['required']">Por favor, introduzca un valor.</div>
+                                <div *ngIf="signupForm.controls['email'].errors['email']">Por favor, introduzca un email válido.</div>
+                                <div *ngIf="signupForm.controls['email'].errors['loginExist']">El usuario introducido ya existe.</div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="text" required=" " placeholder="Email">
+
+                        <div formGroupName="passwords">
+                            <!-- Contraseña -->
+                            <div class="input-group form-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
+                                </div>
+                                <input formControlName="password" type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2"
+                                       [ngClass]="{ 'is-invalid': signupForm.controls['passwords'].controls['password'].dirty && signupForm.controls['passwords'].controls['password'].errors, 'is-valid': signupForm.controls['passwords'].controls['password'].dirty && !signupForm.controls['passwords'].controls['password'].errors }">
+                                <div *ngIf="signupForm.controls['passwords'].controls['password'].dirty && signupForm.controls['passwords'].controls['password'].errors" class="invalid-feedback">
+                                    <div *ngIf="signupForm.controls['passwords'].controls['password'].errors['required']">Por favor, introduzca una contraseña.</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="password" required=" " placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12 ">
-                                <input class="form-control form-control-lg" type="password" required=" " placeholder="Confirm Password">
+
+                            <!-- Confirmar contraseña -->
+                            <div class="input-group form-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3"><i class="ti-pencil"></i></span>
+                                </div>
+                                <input formControlName="confirmPassword" type="password" class="form-control form-control-lg" placeholder="Confirm password" aria-label="Confirm password" aria-describedby="basic-addon3"
+                                       [ngClass]="{ 'is-invalid': signupForm.controls['passwords'].controls['confirmPassword'].dirty && signupForm.controls['passwords'].controls['confirmPassword'].errors, 'is-valid': signupForm.controls['passwords'].controls['confirmPassword'].dirty && !signupForm.controls['passwords'].controls['confirmPassword'].errors }">
+                                <div *ngIf="signupForm.controls['passwords'].controls['confirmPassword'].dirty && signupForm.controls['passwords'].controls['confirmPassword'].errors" class="invalid-feedback">
+                                    <div *ngIf="signupForm.controls['passwords'].controls['confirmPassword'].errors['required']">Por favor, introduzca una contraseña.</div>
+                                    <div *ngIf="signupForm.controls['passwords'].controls['confirmPassword'].errors['matches']">Las contraseñas no coinciden</div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -37,9 +65,10 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Submit -->
                         <div class="form-group text-center ">
                             <div class="col-xs-12 p-b-20 ">
-                                <button class="btn btn-block btn-lg btn-info " type="submit">SIGN UP</button>
+                                <button type="submit" class="btn btn-block btn-lg btn-info" [disabled]="signupForm.invalid || signupForm.pending">Sign up</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0 m-t-10 ">
