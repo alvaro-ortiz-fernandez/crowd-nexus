@@ -1,0 +1,26 @@
+i.fas {
+  padding: 2px 3px 2px 3px; }
+
+:host ::ng-deep quill-editor.ng-dirty.ng-valid .ql-toolbar {
+  border-left-color: #36bea6;
+  border-top-color: #36bea6;
+  border-right-color: #36bea6; }
+
+:host ::ng-deep quill-editor.ng-dirty.ng-valid .ql-container {
+  border-left-color: #36bea6;
+  border-bottom-color: #36bea6;
+  border-right-color: #36bea6; }
+  :host ::ng-deep quill-editor.ng-dirty.ng-valid .ql-container :focus {
+    box-shadow: 0 0 0 0.2rem rgba(246, 45, 81, 0.25); }
+
+:host ::ng-deep quill-editor.ng-dirty.ng-invalid .ql-toolbar {
+  border-left-color: #f62d51;
+  border-top-color: #f62d51;
+  border-right-color: #f62d51; }
+
+:host ::ng-deep quill-editor.ng-dirty.ng-invalid .ql-container {
+  border-left-color: #f62d51;
+  border-bottom-color: #f62d51;
+  border-right-color: #f62d51; }
+
+/*# sourceMappingURL=new-topic.component.css.map */

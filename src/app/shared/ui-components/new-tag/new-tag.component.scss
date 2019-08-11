@@ -1,0 +1,45 @@
+.form-group .fas.fa-spinner.fa-spin {
+    position: fixed;
+    top: 123px;
+    margin-left: 10px;
+}
+
+.color-picker {
+    & .custom-radio {
+        display: inline;
+        padding: 0;
+    }
+
+    & .radioBtn {
+        margin-right: 4px;
+        height: 22px;
+
+        &.btn-warning.selected {
+            box-shadow: 0 0 0 0.2rem rgba(255, 188, 52, 0.5);
+        }
+
+        &.btn-danger.selected {
+            box-shadow: 0 0 0 0.2rem rgba(246, 45, 81, 0.5);
+        }
+
+        &.btn-primary.selected {
+            box-shadow: 0 0 0 0.2rem rgba(116, 96, 238, 0.5);
+        }
+
+        &.btn-info.selected {
+            box-shadow: 0 0 0 0.2rem rgba(41, 98, 255, 0.5);
+        }
+
+        &.btn-success.selected {
+            box-shadow: 0 0 0 0.2rem rgba(54, 190, 166, 0.5);
+        }
+
+        &.btn-dark.selected {
+            box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+        }
+
+        &.btn-light.selected {
+            box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+        }
+    }
+}

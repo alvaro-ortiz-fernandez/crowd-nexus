@@ -14,7 +14,7 @@ import {
 export class AuthService {
 
     authChange = new Subject<boolean>();
-    isAuthenticated = true;
+    isAuthenticated = false;
 
     constructor(private afAuth: AngularFireAuth) {}
 

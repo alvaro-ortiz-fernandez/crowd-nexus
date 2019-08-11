@@ -1,0 +1,132 @@
+@import '../../../../assets/scss/variable';
+
+.tag {
+    cursor: pointer;
+    transition: background 0.4s, color 0.4s;
+
+    &:hover, &:focus {
+        transition: background 0.4s, color 0.4s;
+    }
+}
+
+span[data-closable='true'] {
+    cursor: auto !important;
+
+    & .mdi-close {
+      cursor: pointer;
+    }
+}
+
+@mixin BgColor($normalColor, $hoverColor) {
+    background: $normalColor !important;
+
+    &:hover, &:focus {
+        background: $hoverColor !important;
+    }
+}
+
+@mixin TextColor($normalColor, $hoverColor) {
+    color: $normalColor !important;
+
+    &:hover, &:focus {
+        color: $hoverColor !important;
+    }
+}
+
+/*//////////////  Primary  //////////////*/
+.tag-bg-primary {
+    @include BgColor(
+        lighten($primary, 30%),
+        lighten($primary, 27%)
+    );
+}
+.tag-text-primary {
+    @include TextColor(
+        $primary,
+        darken($primary, 10%)
+    );
+}
+
+/*//////////////  Info  //////////////*/
+.tag-bg-info {
+    @include BgColor(
+        lighten($info, 38%),
+        lighten($info, 35%)
+    );
+}
+.tag-text-info {
+    @include TextColor(
+        $info,
+        darken($info, 10%)
+    );
+}
+
+/*//////////////  Success  //////////////*/
+.tag-bg-success {
+    @include BgColor(
+        lighten($success, 45%),
+        lighten($success, 40%)
+    );
+}
+.tag-text-success {
+    @include TextColor(
+        darken($success, 10%),
+        darken($success, 20%)
+    );
+}
+
+/*//////////////  Warning  //////////////*/
+.tag-bg-warning {
+    @include BgColor(
+        lighten($warning, 35%),
+        lighten($warning, 31%)
+    );
+}
+.tag-text-warning {
+    @include TextColor(
+        darken($warning, 10%),
+        darken($warning, 13%)
+    );
+}
+
+/*//////////////  Danger  //////////////*/
+.tag-bg-danger {
+    @include BgColor(
+        lighten($danger, 40%),
+        lighten($danger, 37%)
+    );
+}
+.tag-text-danger {
+    @include TextColor(
+        $danger,
+        darken($danger, 10%)
+    );
+}
+
+/*//////////////  Dark  //////////////*/
+.tag-bg-dark {
+    @include BgColor(
+        lighten($dark, 20%),
+        $dark
+    );
+}
+.tag-text-dark {
+    @include TextColor(
+        $light,
+        lighten($light, 10%)
+    );
+}
+
+/*//////////////  Light  //////////////*/
+.tag-bg-light {
+    @include BgColor(
+        lighten($dark, 72%),
+        lighten($dark, 68%)
+    );
+}
+.tag-text-light {
+    @include TextColor(
+        $dark,
+        darken($dark, 20%)
+    );
+}

@@ -1,0 +1,9 @@
+@media (min-width: 992px) {
+    .card .card-body td.d-none.d-lg-block {
+        display: table-cell !important;
+    }
+}
+
+.app-link.text-dark {
+    font-weight: 500;
+}

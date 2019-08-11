@@ -16,6 +16,13 @@ const appRoutes: Routes = [
   },
   {
     path: '',
+    component: FullComponent,
+    children: [
+      { path: 'topics', loadChildren: './forum/forum.module#ForumModule' }
+    ]
+  },
+  {
+    path: '',
     component: BlankComponent,
     children: [
       { path: 'authentication', loadChildren: './authentication/authentication.module#AuthenticationModule' }

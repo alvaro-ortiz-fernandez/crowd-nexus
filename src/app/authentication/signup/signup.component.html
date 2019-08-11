@@ -18,10 +18,10 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">
                                     <i [ngClass]="{ 'ti-user': signupForm.controls['email'].status !== 'PENDING',
-                                                    'fa fa-spin fa-cog': signupForm.controls['email'].status === 'PENDING' }"></i>
+                                                    'fas fa-spinner fa-spin': signupForm.controls['email'].status === 'PENDING' }"></i>
                                 </span>
                             </div>
-                            <input formControlName="email" type="text" class="form-control form-control-lg" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1"
+                            <input formControlName="email" type="text" class="form-control form-control-lg" placeholder="Email" autocomplete="off"
                                    [ngClass]="{ 'is-invalid': signupForm.controls['email'].dirty && signupForm.controls['email'].status !== 'PENDING' && signupForm.controls['email'].errors,
                                                 'is-valid': signupForm.controls['email'].dirty && signupForm.controls['email'].status !== 'PENDING' && !signupForm.controls['email'].errors }">
                             <div *ngIf="signupForm.controls['email'].dirty && signupForm.controls['email'].errors" class="invalid-feedback">

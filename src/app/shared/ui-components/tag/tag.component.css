@@ -1,0 +1,60 @@
+/*******************************/
+/*******************************/
+/*Theme Colors*/
+/*Topbar Colors*/
+/*Sidebar Colors*/
+/*Boxed layout width*/
+/*Shadow*/
+/*transitions*/
+/*Dark transparent bg*/
+/*******************************/
+/*******************************/
+/**
+ * Table Of Content
+ *
+ *  1. Color system
+ *  2. Options
+ *  3. Body
+ *  4. Typography
+ *  5. Breadcrumbs
+ *  6. Cards
+ *  7. Dropdowns
+ *  8. Buttons
+ *  9. Typography
+ *  10. Progress bars
+ *  11. Tables
+ *  12. Forms
+ *  14. Component
+ */
+.label {
+  cursor: pointer; }
+
+.tag-primary {
+  background: #edeafd !important;
+  color: #7460ee !important; }
+
+.tag-info {
+  background: #ebf0ff !important;
+  color: #2962ff !important; }
+
+.tag-success {
+  background: #e3f7f3 !important;
+  color: #2b9683 !important; }
+
+.tag-warning {
+  background: #fff7e7 !important;
+  color: #ffab01 !important; }
+
+.tag-danger {
+  background: #fef1f3 !important;
+  color: #f62d51 !important; }
+
+.tag-light {
+  background: #f0f2f3 !important;
+  color: #343a40 !important; }
+
+.tag-dark {
+  background: #626d78 !important;
+  color: #f8f9fa !important; }
+
+/*# sourceMappingURL=tag.component.css.map */

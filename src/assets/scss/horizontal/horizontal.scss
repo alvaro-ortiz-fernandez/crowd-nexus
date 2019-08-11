@@ -30,8 +30,11 @@ $sidebarheight:54px;
             position: fixed;
            
         }
-        .page-wrapper{
+        .page-wrapper.noDashboard {
             padding-top: 78px;
+        }
+        .main-jumbotron {
+            margin-top: 64px;
         }
     }
 }
@@ -71,8 +74,11 @@ This is for the horizontal layout
             }
         }
         &[data-sidebar-position="fixed"]{
-            .page-wrapper{
+            .page-wrapper.noDashboard {
                 padding-top: 128px;
+            }
+            .main-jumbotron {
+                margin-top: 118px;
             }
         }
         /****************************

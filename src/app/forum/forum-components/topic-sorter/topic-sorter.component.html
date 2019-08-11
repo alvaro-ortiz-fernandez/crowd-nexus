@@ -1,0 +1,24 @@
+<div class="card m-b-0">
+    <div class="card-body">
+        <h4 class="card-title text-center p-b-5">Sort topics</h4>
+
+        <div class="row">
+            <div class="col-12">
+                <form [formGroup]="topicSortForm" class="form-horizontal" id="loginform">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" formControlName="sortTerm" value="radioDate" id="radioDate" class="custom-control-input" checked />
+                        <label class="custom-control-label" for="radioDate">Sort by date</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" formControlName="sortTerm" value="radioViews" id="radioViews" class="custom-control-input" />
+                        <label class="custom-control-label" for="radioViews">Sort by views</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" formControlName="sortTerm" value="radioName" id="radioName" class="custom-control-input" />
+                        <label class="custom-control-label" for="radioName">Sort by Topic name</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

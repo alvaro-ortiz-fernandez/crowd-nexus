@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,KAAM;EACF,OAAO,EAAE,eAAe;;AAG5B,0DAA2D;EACvD,iBAAiB,EAAE,OAAO;EAC1B,gBAAgB,EAAE,OAAO;EACzB,kBAAkB,EAAE,OAAO;;AAE/B,4DAA6D;EACzD,iBAAiB,EAAE,OAAO;EAC1B,mBAAmB,EAAE,OAAO;EAC5B,kBAAkB,EAAE,OAAO;EAE3B,mEAAS;IACL,UAAU,EAAE,oCAAoC;;AAIxD,4DAA6D;EACzD,iBAAiB,EAAE,OAAO;EAC1B,gBAAgB,EAAE,OAAO;EACzB,kBAAkB,EAAE,OAAO;;AAE/B,8DAA+D;EAC3D,iBAAiB,EAAE,OAAO;EAC1B,mBAAmB,EAAE,OAAO;EAC5B,kBAAkB,EAAE,OAAO",
+"sources": ["../../../../../../../../../Programaci%C3%B3n/JavaScript/Angular/crowd-nexus/src/app/forum/forum-components/new-topic/new-topic.component.scss"],
+"names": [],
+"file": "new-topic.component.css"
+}

@@ -1,0 +1,4 @@
+<span class="label tag m-r-5" [ngClass]="getColor()" [attr.data-closable]="closable === true || closable === 'true'">
+    {{ tag.name }}
+    <i *ngIf="closable === true || closable === 'true'" class="mdi mdi-close m-l-5" (click)="close(tag)"></i>
+</span>

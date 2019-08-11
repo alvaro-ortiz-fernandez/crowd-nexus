@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,iCAAiC;AAEjC,iCAAiC;AAEjC,gBAAgB;AAehB,iBAAiB;AASjB,kBAAkB;AAalB,sBAAsB;AAItB,UAAU;AAIV,eAAe;AAIf,uBAAuB;AAoBvB,iCAAiC;AAEjC,iCAAiC;AAEjC;;;;;;;;;;;;;;;;GAgBG;AC3FH,MAAO;EACL,MAAM,EAAE,OAAO;;AAGjB,YAAa;EACX,UAAU,EAAE,kBAAiC;EAC7C,KAAK,EAAE,kBAAmB;;AAE5B,SAAU;EACR,UAAU,EAAE,kBAA8B;EAC1C,KAAK,EAAE,kBAAgB;;AAEzB,YAAa;EACX,UAAU,EAAE,kBAAiC;EAC7C,KAAK,EAAE,kBAAgC;;AAEzC,YAAa;EACX,UAAU,EAAE,kBAAiC;EAC7C,KAAK,EAAE,kBAAgC;;AAEzC,WAAa;EACX,UAAU,EAAE,kBAAgC;EAC5C,KAAK,EAAE,kBAAkB;;AAE3B,UAAa;EACX,UAAU,EAAE,kBAA8B;EAC1C,KAAK,EAAE,kBAAgB;;AAEzB,SAAa;EACX,UAAU,EAAE,kBAA8B;EAC1C,KAAK,EAAE,kBAAiB",
+"sources": ["../../../../../../../../../Programaci%C3%B3n/JavaScript/Angular/crowd-nexus/src/assets/scss/variable.scss","../../../../../../../../../Programaci%C3%B3n/JavaScript/Angular/crowd-nexus/src/app/shared/ui-components/tag/tag.component.scss"],
+"names": [],
+"file": "tag.component.css"
+}

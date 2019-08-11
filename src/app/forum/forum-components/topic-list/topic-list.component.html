@@ -1,0 +1,74 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-md-flex flex-row">
+            <div>
+                <h4 class="card-title">Topic name</h4>
+                <h5 class="card-subtitle">List of results</h5>
+            </div>
+            <div class="ml-auto d-flex no-block">
+                <span class="text-muted font-14 d-block">Total posts: {{ filteredTopics.length }}</span>
+            </div>
+        </div>
+
+        <div class="input-group m-t-20">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="ti-search"></i></span>
+            </div>
+
+            <input type="text" class="form-control" placeholder="Type to filter..." (keyup)="updateFilter($event)">
+        </div>
+
+        <div class="table-responsive">
+            <table class="table no-wrap v-middle m-b-0">
+                <thead>
+                  <tr class="border-0">
+                      <th class="border-0">Team Lead</th>
+                      <th class="border-0">Posts</th>
+                      <th class="border-0">Views</th>
+                      <th class="border-0 d-none d-lg-block">Last post</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let topic of filteredTopics" [@TopicListAnimation]>
+                        <td>
+                            <div class="d-flex no-block align-items-center">
+                                <div class="m-r-10">
+                                    <a class="btn-circle btn btn-info" href="javascript:void(0)">SS</a>
+                                </div>
+                                <div class="my-auto">
+                                    <h5 class="m-b-5 font-16">
+                                        <a routerLink="/topics" class="app-link text-dark">{{ topic.title }}</a>
+                                    </h5>
+                                    <span class="text-muted d-block font-12">
+                                        By <a routerLink="/topics" class="app-link text-danger">{{ topic.author }}</a>, {{ topic.date }}
+                                    </span>
+
+                                    <div class="tags m-t-5">
+                                        <app-tag *ngFor="let tag of topic.tags" [tag]="tag" class="m-r-5" (click)="applyTag(tag)"></app-tag>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="blue-grey-text text-darken-4 font-medium">{{ topic.posts }}</td>
+                        <td class="blue-grey-text text-darken-4 font-medium">{{ topic.views }}</td>
+                        <td class="d-none d-lg-block">
+                            <span class="text-muted font-12 d-block">
+                                Last post by <a routerLink="/topics" class="app-link text-danger">{{ topic.lastPostAuthor }}</a>
+                            </span>
+                            <span class="text-muted font-12 d-block">
+                                {{ topic.lastPostDate }}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr *ngIf="filteredTopics.length < 1">
+                        <td colspan="4">
+                            <div class="alert alert-info m-b-0" role="alert">
+                                <i class="fas fa-info m-r-5"></i> No se encontró nigún topic.
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!-- / .table-responsive -->
+    </div> <!-- / .card-body -->
+</div> <!-- / .card -->

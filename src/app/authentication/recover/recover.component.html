@@ -23,7 +23,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">
                                             <i [ngClass]="{ 'ti-user': recoverForm.controls['email'].status !== 'PENDING',
-                                                            'fa fa-spin fa-cog': recoverForm.controls['email'].status === 'PENDING' }"></i>
+                                                            'fas fa-spinner fa-spin': recoverForm.controls['email'].status === 'PENDING' }"></i>
                                         </span>
                                     </div>
                                     <input formControlName="email" type="text" class="form-control form-control-lg" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1"

@@ -1,0 +1,104 @@
+<ng-template #tagModal let-modal>
+    <form class="form-horizontal" [formGroup]="newTagForm" (ngSubmit)="onSubmit()">
+        <!-- Modal header -->
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">New tag</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+            <div class="row m-auto">
+                <!-- Tag name -->
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="tagName" class="control-label col-form-label">Tag name</label>
+                        <input formControlName="name" type="text" class="form-control loadable" id="tagName" placeholder="Tag name here..." autocomplete="off"
+                               [ngClass]="{ 'is-invalid': newTagForm.controls['name'].dirty && newTagForm.controls['name'].status !== 'PENDING' && newTagForm.controls['name'].errors,
+                                            'is-valid': newTagForm.controls['name'].dirty && newTagForm.controls['name'].status !== 'PENDING' && !newTagForm.controls['name'].errors,
+                                            'p-l-30': newTagForm.controls['name'].status === 'PENDING' }">
+
+                        <i class="fas fa-spinner fa-spin" [hidden]="newTagForm.controls['name'].status !== 'PENDING'"></i>
+
+                        <div *ngIf="newTagForm.controls['name'].dirty && newTagForm.controls['name'].errors" class="invalid-feedback">
+                            <div *ngIf="newTagForm.controls['name'].errors['required']">Por favor, introduzca un nombre.</div>
+                            <div *ngIf="newTagForm.controls['name'].errors['tagNameExists']">El nombre introducido ya está en uso.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Background color -->
+                <div class="col-6">
+                    <div class="form-group color-picker">
+                        <label class="control-label col-form-label">Background color</label>
+                        <div>
+                            <div *ngFor="let tagColor of tagColors" class="custom-control custom-radio">
+                                <input type="radio" formControlName="bgColor" id="{{ 'bgColor-' + tagColor.value }}" value="{{ tagColor.value }}" class="custom-control-input" />
+                                <label class="{{ 'radioBtn btn ' + tagColor.class }}" for="{{ 'bgColor-' + tagColor.value }}" [ngClass]="{ 'selected': newTagForm.controls['bgColor'].value === tagColor.value.toString() }"></label>
+                            </div>
+                            <div *ngIf="newTagForm.controls['bgColor'].dirty && newTagForm.controls['bgColor'].errors" class="invalid-feedback">
+                                <div *ngIf="newTagForm.controls['bgColor'].errors['required']">Por favor, seleccione un color.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text color -->
+                <div class="col-6">
+                    <div class="form-group color-picker">
+                        <label class="control-label col-form-label">Background color</label>
+                        <div>
+                            <div *ngFor="let tagColor of tagColors" class="custom-control custom-radio">
+                                <input type="radio" formControlName="textColor" id="{{ 'textColor-' + tagColor.value }}" value="{{ tagColor.value }}" class="custom-control-input" />
+                                <label class="{{ 'radioBtn btn ' + tagColor.class }}" for="{{ 'textColor-' + tagColor.value }}" [ngClass]="{ 'selected': newTagForm.controls['textColor'].value === tagColor.value.toString() }"></label>
+                            </div>
+                            <div *ngIf="newTagForm.controls['textColor'].dirty && newTagForm.controls['textColor'].errors" class="invalid-feedback">
+                                <div *ngIf="newTagForm.controls['textColor'].errors['required']">Por favor, seleccione un color.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview -->
+                <div class="col-12 m-t-30 text-center">
+                    <div class="form-group">
+                        <app-tag [tag]="newTag" class="font-18"></app-tag>
+                    </div>
+                </div>
+
+                <!-- Alert -->
+                <div class="col-12 m-t-10" [hidden]="hideAlert">
+                    <!-- Creando tag... -->
+                    <div class="alert alert-info m-b-0" role="alert" [hidden]="!creatingTag">
+                        <i class="fas fa-spinner fa-spin m-r-5"></i> Creando la etiqueta...
+                    </div>
+
+                    <!-- Tag creado correctamente -->
+                    <div class="alert alert-success m-b-0" role="alert" [hidden]="creatingTag || !createTagResult">
+                        <i class="fa fa-check m-r-5"></i> Etiqueta creada correctamente.
+                        <button type="button" class="close" aria-label="Close" (click)="hideAlert = true">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- Error creando tag -->
+                    <div class="alert alert-danger m-b-0" role="alert" [hidden]="creatingTag || createTagResult">
+                        <i class="fa fa-exclamation-triangle m-r-5"></i> Se ha producido un error, por favor, inténtelo de nuevo.
+                        <button type="button" class="close" aria-label="Close" (click)="hideAlert = true">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div> <!-- / .row.m-auto -->
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info waves-effect waves-light" [disabled]="newTagForm.invalid || newTagForm.pending">
+                <i class="mdi mdi-content-save"></i> Save
+            </button>
+        </div>
+    </form>
+</ng-template>

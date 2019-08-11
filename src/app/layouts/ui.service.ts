@@ -7,7 +7,7 @@ import {
   LayoutOptions,
   SidebarPosition,
   Theme
-} from '../shared/sidebar/layout-options.model';
+} from '../shared/navigation/sidebar/layout-options.model';
 
 @Injectable()
 export class UiService {

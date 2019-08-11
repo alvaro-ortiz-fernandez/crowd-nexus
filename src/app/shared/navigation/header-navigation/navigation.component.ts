@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { UiService } from '../../layouts/ui.service';
-import { AuthService } from '../../authentication/auth.service';
+import { UiService } from '../../../layouts/ui.service';
+import { AuthService } from '../../../authentication/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-navigation',
@@ -13,6 +14,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
     public config: PerfectScrollbarConfigInterface = {};
     public showSearch = false;
     private authenticated = false;
+    private authChangeSubscription: Subscription;
 
     // Notificaciones
     notifications: Object[] = [
@@ -82,11 +84,14 @@ export class NavigationComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.authenticated = this.authService.isAuth();
-        this.authService.authChange.subscribe(auth => this.authenticated = auth);
+        this.authChangeSubscription = this.authService.authChange
+            .subscribe(auth => {
+                this.authenticated = auth;
+            });
     }
 
     ngOnDestroy() {
-        this.authService.authChange.unsubscribe();
+        this.authChangeSubscription.unsubscribe();
     }
 
     toggleSettingsSidebar() {
